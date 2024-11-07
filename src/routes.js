@@ -1,22 +1,21 @@
 // routes/authRoutes.js
-const authHandler = require('./handler/authHandler'); // Import handler
-
+const { registerUser, loginUser, uploadPhoto } = require('./handler/authHandler');
 
 const authRoutes = [
     {
         method: 'POST',
         path: '/register',
-        handler: authHandler.registerUser,
+        handler: registerUser,
     },
     {
         method: 'POST',
         path: '/login',
-        handler: authHandler.loginUser,
+        handler:loginUser,
     },
     {
         method: 'POST',
         path: '/upload-photo-profile',
-        handler: authHandler.uploadPhoto,
+        handler: uploadPhoto,
     },
 ];
 

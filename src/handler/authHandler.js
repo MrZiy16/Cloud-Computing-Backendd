@@ -42,6 +42,17 @@ const registerUser = async (request, h) => {
         return h.response({ error: error.details[0].message }).code(400);
     }
 
+    // Periksa apakah user sudah terdaftar
+    try {
+        const [rows] = await db.query('SELECT * FROM users WHERE username = ? OR email = ?', [username, email]);
+        if (rows.length > 0) {
+            // Jika user sudah terdaftar
+            return h.response({ error: 'User already registered' }).code(409);
+        }
+    } catch (err) {
+        return h.response({ error: err.message }).code(500);
+    }
+
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
