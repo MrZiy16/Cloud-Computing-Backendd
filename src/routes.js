@@ -1,5 +1,6 @@
 // routes/authRoutes.js
-const authHandler = require('./handlers/authHandler'); // Import handler
+const authHandler = require('./handler/authHandler'); // Import handler
+
 
 const authRoutes = [
     {

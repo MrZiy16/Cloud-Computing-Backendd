@@ -9,7 +9,7 @@ const init = async () => {
     });
 
     // Daftarkan route
-    server.route(routes);
+    server.route(authRoutes);
 
     await server.start();
     console.log('Server running on %s', server.info.uri);
